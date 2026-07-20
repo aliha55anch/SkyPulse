@@ -7,11 +7,11 @@ export default function LeftSidebar() {
       <img className="h-10 w-10 rounded-xl" src="/logo.webp" alt="Weather app" />
 
       <div className="mt-3 flex w-full flex-1 flex-col items-stretch gap-10 max-[850px]:mt-0 max-[850px]:flex-row max-[850px]:justify-end">
-        <button className="flex h-12 flex-col items-center justify-center rounded-xl bg-slate-800/80 text-xs font-medium text-slate-200 transition hover:bg-slate-700/80 max-[850px]:h-10 max-[850px]:w-16 max-[850px]:flex-row max-[850px]:gap-1.5">
+        <button className="flex h-12 flex-col items-center justify-center rounded-xl bg-slate-800/80 text-xs font-bold text-slate-100 transition hover:bg-slate-700/80 max-[850px]:h-10 max-[850px]:w-16 max-[850px]:flex-row max-[850px]:gap-1.5">
           <FiMapPin className="text-lg text-slate-300" />
           <span className="mt-1 max-[850px]:mt-0">Cities</span>
         </button>
-        <button className="flex h-12 flex-col items-center justify-center rounded-xl bg-slate-800/80 text-xs font-medium text-slate-200 transition hover:bg-slate-700/80 max-[850px]:h-10 max-[850px]:w-16 max-[850px]:flex-row max-[850px]:gap-1.5">
+        <button className="flex h-12 flex-col items-center justify-center rounded-xl bg-slate-800/80 text-xs font-bold text-slate-100 transition hover:bg-slate-700/80 max-[850px]:h-10 max-[850px]:w-16 max-[850px]:flex-row max-[850px]:gap-1.5">
           <FiMap className="text-lg text-slate-300" />
           <span className="mt-1 max-[850px]:mt-0">Maps</span>
         </button>
