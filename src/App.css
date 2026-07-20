@@ -1,1 +1,28 @@
-@import "tailwindcss";
+.app-page { height: 100dvh; min-height: 560px; overflow: hidden; padding: 12px; }
+.app-shell { display: flex; height: 100%; gap: 12px; overflow: hidden; border-radius: 20px; padding: 12px; }
+.content-grid { display: grid; min-width: 0; flex: 1; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); gap: 12px; overflow: hidden; }
+.primary-column, .weather-stack { display: flex; min-width: 0; min-height: 0; flex-direction: column; gap: 12px; }
+.primary-column { padding-top: 2px; }
+.weather-stack { flex: 1; }
+.search-row { display: flex; width: 100%; align-items: center; gap: 10px; }
+.theme-control { border-radius: 14px; padding: 7px 12px; }
+
+@media (max-width: 850px) {
+  .app-page { min-height: 680px; padding: 8px; }
+  .app-shell { flex-direction: column; gap: 8px; padding: 8px; border-radius: 16px; }
+  .content-grid { grid-template-columns: minmax(0, 1fr) minmax(220px, .8fr); gap: 8px; }
+  .primary-column, .weather-stack { gap: 8px; }
+}
+
+@media (max-width: 620px) {
+  .app-page { min-height: 760px; }
+  .content-grid { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1.6fr) minmax(0, 1fr); }
+  .search-row { gap: 6px; }
+  .theme-control { padding: 5px 6px; }
+}
+
+@media (max-height: 720px) and (min-width: 851px) {
+  .app-page { padding: 8px; }
+  .app-shell, .content-grid, .primary-column, .weather-stack { gap: 8px; }
+  .app-shell { padding: 8px; }
+}

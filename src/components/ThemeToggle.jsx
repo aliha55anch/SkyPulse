@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import Switch from "@mui/material/Switch";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-function ThemeToggle() {
+export default function ThemeToggle() {
   return (
-    <div>
-        
-    </div>
-  )
-}
+    <div className="flex h-10 items-center justify-center gap-1.5">
+      <LightModeIcon className="text-yellow-400" />
 
-export default ThemeToggle
+      <Switch />
+
+      <DarkModeIcon className="text-slate-300" />
+    </div>
+  );
+}
