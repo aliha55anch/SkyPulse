@@ -64,18 +64,12 @@ npm install
 
 ### Environment Setup
 
-```bash
-# Copy the example env file
-cp .env.example .env
-```
-
-The `.env` file contains API URLs. Copy from the template:
+Create `.env` file and add your API URLs. Take example from .env.example.
 
 ```bash
-cp .env.example .env
+.env.example 
 ```
 
-All APIs are free and require no keys.
 
 ### Run the App
 
@@ -163,7 +157,7 @@ All APIs are **free** and require **no API keys**.
 
 ---
 
-## License
+## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
@@ -171,6 +165,11 @@ This project is open source and available under the [MIT License](LICENSE).
 
 <div align="center">
 
-Built with React + Vite + Tailwind CSS
-
+Developed 👨‍💻 by Muhammad Ali Hassan with React + Vite + Tailwind CSS
+GitHub: https://github.com/aliha55anch
 </div>
+
+---
+
+## ⭐ Support
+If you like this project, consider giving it a star on GitHub ⭐
