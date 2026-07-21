@@ -24,7 +24,7 @@ function AirConditions({ weather, darkMode }) {
   ]
 
   return (
-    <section className={`min-h-0 w-full flex-1 rounded-2xl border ${darkMode ? "border-white/5 bg-slate-800/70" : "border-slate-200 bg-white/70"} p-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.22)] max-[620px]:p-3`}>
+    <section className={`min-h-0 w-full flex-1 rounded-2xl border ${darkMode ? "border-white/5 bg-slate-800/70" : "border-slate-200 bg-white/70"} p-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.22)] max-[640px]:p-3`}>
       <div className="mb-3 flex items-center justify-between">
         <h3 className={`text-xs font-bold uppercase tracking-[0.18em] ${darkMode ? "text-slate-300" : "text-slate-500"}`}>Air Conditions</h3>
       </div>

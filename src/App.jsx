@@ -5,7 +5,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import TodaysForecast from "./components/TodaysForecast";
 import AirConditions from "./components/AirConditions";
 import RightSidebar from "./components/RightSidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchWeatherByLocation, fetchWeatherByCity } from "./services/weatherApi";
 
 import "./App.css";
@@ -17,6 +17,15 @@ function App() {
   const [error, setError] = useState("");
   const [darkMode, setDarkMode] = useState(true);
   const [activePanel, setActivePanel] = useState(null);
+
+  useEffect(() => {
+    setQuery("Islamabad");
+    setLoading(true);
+    fetchWeatherByCity("Islamabad")
+      .then((data) => setWeather(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
 
   function handleToggleTheme() {
     setDarkMode((prev) => !prev);

@@ -1,6 +1,6 @@
-const GEOCODING_URL = "https://geocoding-api.open-meteo.com/v1/search";
+const GEOCODING_URL = import.meta.env.VITE_GEOCODING_API_URL;
 
-const FORECAST_URL = "https://api.open-meteo.com/v1/forecast";
+const FORECAST_URL = import.meta.env.VITE_FORECAST_API_URL;
 
 async function fetchJson(url) {
   const response = await fetch(url);

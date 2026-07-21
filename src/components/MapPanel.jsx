@@ -39,7 +39,7 @@ export default function MapPanel({ onSelectCity }) {
 
     try {
       const res = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latlng.lat}&lon=${latlng.lng}&zoom=10`,
+        `${import.meta.env.VITE_NOMINATIM_API_URL}?format=json&lat=${latlng.lat}&lon=${latlng.lng}&zoom=10`,
       );
       const data = await res.json();
 
@@ -76,7 +76,7 @@ export default function MapPanel({ onSelectCity }) {
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-xl">
       {locating && (
-        <div className="absolute right-1.5 top-1.5 z-[1000] flex items-center gap-1.5 rounded-lg bg-slate-900/90 px-2 py-1 text-[10px] font-bold text-white shadow-lg">
+        <div className="absolute right-1.5 top-1.5 z-1000 flex items-center gap-1.5 rounded-lg bg-slate-900/90 px-2 py-1 text-[10px] font-bold text-white shadow-lg">
           <span className="h-2.5 w-2.5 animate-spin rounded-full border-2 border-blue-400 border-t-transparent" />
           Locating...
         </div>
@@ -90,7 +90,7 @@ export default function MapPanel({ onSelectCity }) {
       >
         <TileLayer
           attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url={import.meta.env.VITE_MAP_TILES_URL}
         />
         <LocationMarker position={position} onMapClick={handleMapClick} />
       </MapContainer>
