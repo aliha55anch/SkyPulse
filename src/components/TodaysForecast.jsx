@@ -41,7 +41,7 @@ function TodaysForecast({ weather, darkMode }) {
           >
             <p className={`text-[11px] font-bold uppercase tracking-wide ${darkMode ? "text-slate-300" : "text-slate-500"}`}>{item.time}</p>
             <img src={item.icon} alt="" className="h-8 w-8" />
-            <p className="text-lg font-extrabold leading-none text-white">{item.temp}</p>
+            <p className={`text-lg font-extrabold leading-none ${darkMode ? "text-white" : "text-slate-900"}`}>{item.temp}</p>
           </div>
         ))}
       </div>

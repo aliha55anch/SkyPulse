@@ -22,8 +22,8 @@ function CurrentWeather({ weather, darkMode }) {
         <div className="min-w-0">
           <p className={`text-xs font-bold uppercase tracking-[0.18em] ${darkMode ? "text-slate-300" : "text-slate-500"}`}>Current Weather</p>
           <div className="mt-2 flex flex-wrap items-end gap-x-3 gap-y-1">
-            <h2 className="text-3xl font-extrabold text-white max-[640px]:text-2xl">{location.name}</h2>
-            <span className="text-4xl font-extrabold leading-none text-white max-[640px]:text-3xl">{temp}°</span>
+            <h2 className={`text-3xl font-extrabold max-[640px]:text-2xl ${darkMode ? "text-white" : "text-slate-900"}`}>{location.name}</h2>
+            <span className={`text-4xl font-extrabold leading-none max-[640px]:text-3xl ${darkMode ? "text-white" : "text-slate-900"}`}>{temp}°</span>
           </div>
           <p className={`mt-2 text-sm font-semibold ${darkMode ? "text-slate-300" : "text-slate-500"}`}>Chance of rain: {rainChance}%</p>
         </div>

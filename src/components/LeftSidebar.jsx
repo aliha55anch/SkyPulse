@@ -75,7 +75,7 @@ export default function LeftSidebar({ activePanel, onPanelChange, onSelectCity, 
 
         {activePanel && (
           <div className="mt-2 min-h-0 flex-1 overflow-hidden">
-            {activePanel === "cities" && <CitiesPanel onSelectCity={onSelectCity} />}
+            {activePanel === "cities" && <CitiesPanel onSelectCity={onSelectCity} darkMode={darkMode} />}
             {activePanel === "map" && <MapPanel onSelectCity={onSelectCity} />}
           </div>
         )}
@@ -124,7 +124,7 @@ export default function LeftSidebar({ activePanel, onPanelChange, onSelectCity, 
               darkMode ? "border-white/5 bg-slate-900/95" : "border-slate-200 bg-slate-50"
             } shadow-[0_8px_20px_rgba(0,0,0,0.2)]`}
           >
-            {activePanel === "cities" && <CitiesPanel onSelectCity={onSelectCity} />}
+            {activePanel === "cities" && <CitiesPanel onSelectCity={onSelectCity} darkMode={darkMode} />}
             {activePanel === "map" && <MapPanel onSelectCity={onSelectCity} />}
           </div>
         )}

@@ -35,7 +35,7 @@ function AirConditions({ weather, darkMode }) {
             <Icon className={`mt-0.5 text-xl ${darkMode ? "text-slate-400" : "text-slate-500"}`} />
             <div>
               <p className={`text-sm font-semibold ${darkMode ? "text-slate-300" : "text-slate-500"}`}>{label}</p>
-              <p className="mt-1 text-xl font-extrabold leading-none text-white">{value}</p>
+              <p className={`mt-1 text-xl font-extrabold leading-none ${darkMode ? "text-white" : "text-slate-900"}`}>{value}</p>
             </div>
           </div>
         ))}
