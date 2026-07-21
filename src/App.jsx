@@ -1,13 +1,35 @@
-import LeftSidebar from "./components/LeftSidebar"
-import SearchBar from "./components/SearchBar"
-import ThemeToggle from "./components/ThemeToggle"
-import CurrentWeather from "./components/CurrentWeather"
-import TodaysForecast from "./components/TodaysForecast"
-import AirConditions from "./components/AirConditions"
-import RightSidebar from "./components/RightSidebar"
-import "./App.css"
+import LeftSidebar from "./components/LeftSidebar";
+import SearchBar from "./components/SearchBar";
+import ThemeToggle from "./components/ThemeToggle";
+import CurrentWeather from "./components/CurrentWeather";
+import TodaysForecast from "./components/TodaysForecast";
+import AirConditions from "./components/AirConditions";
+import RightSidebar from "./components/RightSidebar";
+import { useState } from "react";
+import { fetchWeatherByCity } from "./services/weatherApi";
+
+import "./App.css";
 
 function App() {
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSearch(e) {
+    e.preventDefault();
+    if (!query.trim()) return;
+    setLoading(true);
+    setError("");
+    try {
+      const data = await fetchWeatherByCity(query);
+      setWeather(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <main className="app-page bg-slate-950 text-white">
@@ -17,7 +39,12 @@ function App() {
           <div className="primary-column">
             <div className="search-row">
               <div className="min-w-0 flex-1">
-                <SearchBar />
+                <SearchBar
+                  query={query}
+                  onQueryChange={setQuery}
+                  onSearch={handleSearch}
+                  loading={loading}
+                />
               </div>
               <div className="theme-control shrink-0 border border-white/5 bg-slate-800/80 shadow-[0_10px_24px_rgba(0,0,0,0.2)]">
                 <ThemeToggle />
@@ -33,7 +60,7 @@ function App() {
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
