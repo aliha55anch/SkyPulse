@@ -5,7 +5,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import TodaysForecast from "./components/TodaysForecast";
 import AirConditions from "./components/AirConditions";
 import RightSidebar from "./components/RightSidebar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchWeatherByLocation, fetchWeatherByCity } from "./services/weatherApi";
 
 import "./App.css";
@@ -17,14 +17,59 @@ function App() {
   const [error, setError] = useState("");
   const [darkMode, setDarkMode] = useState(true);
   const [activePanel, setActivePanel] = useState(null);
+  const activeLocationRef = useRef(null);
 
   useEffect(() => {
+    let isActive = true;
+
     setQuery("Islamabad");
     setLoading(true);
     fetchWeatherByCity("Islamabad")
-      .then((data) => setWeather(data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+      .then((data) => {
+        if (!isActive) return;
+        activeLocationRef.current = data.location;
+        setWeather(data);
+      })
+      .catch((err) => {
+        if (isActive) setError(err.message);
+      })
+      .finally(() => {
+        if (isActive) setLoading(false);
+      });
+
+    async function refreshWeather() {
+      const location = activeLocationRef.current;
+      if (!location) return;
+
+      try {
+        const data = await fetchWeatherByLocation(location);
+        const activeLocation = activeLocationRef.current;
+        const isSameLocation =
+          activeLocation?.latitude === location.latitude &&
+          activeLocation?.longitude === location.longitude;
+
+        if (isActive && isSameLocation) {
+          setWeather(data);
+          setError("");
+        }
+      } catch (err) {
+        if (isActive) setError(err.message);
+      }
+    }
+
+    const refreshTimer = window.setInterval(refreshWeather, 15 * 60 * 1000);
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") refreshWeather();
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      isActive = false;
+      window.clearInterval(refreshTimer);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   function handleToggleTheme() {
@@ -41,6 +86,7 @@ function App() {
       } else {
         data = await fetchWeatherByLocation(city);
       }
+      activeLocationRef.current = data.location;
       setWeather(data);
       if (typeof city === "string") {
         setQuery(city);
