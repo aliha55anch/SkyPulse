@@ -163,13 +163,12 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-<div align="center">
+## Developed 👨‍💻 by: 
 
-Developed 👨‍💻 by Muhammad Ali Hassan with React + Vite + Tailwind CSS
-GitHub: https://github.com/aliha55anch
-</div>
+Muhammad Ali Hassan 
 
 ---
 
 ## ⭐ Support
+
 If you like this project, consider giving it a star on GitHub ⭐
